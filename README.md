@@ -1,6 +1,6 @@
 # JoBot
 
-JobBot is a simple Python script that scrapes the current job openings from the [Metacore Careers page](https://metacoregames.com/careers) and prints them to the command line. You can copy this code and edit it to a company website of your liking.
+JoBot is a simple Python script that scrapes the current job openings from the [Metacore Careers page](https://metacoregames.com/careers) and prints them to the command line. You can copy this code and edit it to a company website of your liking.
 
 ## Features
 
@@ -14,7 +14,7 @@ JobBot is a simple Python script that scrapes the current job openings from the 
 
 ```
 
-git clone [https://github.com/makekop/joBot.git](https://github.com/makekop/joBot.git)
+git clone https://github.com/makekop/joBot.git
 
 ```
 
@@ -57,19 +57,3 @@ python3 jobot.py
 ## License
 
 MIT License
-
-```
----
-
-### ✅ Summary of files you should have in your repo
-
-```
-
-jobBot/
-├── jobbot.py ← your Python script
-├── requirements.txt ← list of Python dependencies
-└── README.md ← project description and instructions
-
-```
----
-```
