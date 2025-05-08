@@ -5,7 +5,7 @@ JoBot is a simple Python script that scrapes the current job openings from the [
 ## Features
 
 ✅ Fetches live job openings using a GET request  
-✅ Removes unnecessary text and query parameters for example (`?duplicate=true`)
+✅ Removes unnecessary text and query parameters (e.g., `?duplicate=true`)  
 ✅ Displays a clean and readable list of jobs in the terminal
 
 ## How to Use
