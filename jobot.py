@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
+from bs4 import BeautifulSoup
+import requests
+
 
 def main():
-    from bs4 import BeautifulSoup
-    import requests
 
     url = "https://metacoregames.com/careers"
 
@@ -27,7 +28,7 @@ def main():
                 .strip()
             )
             if not header_printed:
-                print(f"Here are the current job openings: ")
+                print("Here are the current job openings: ")
                 header_printed = True
 
             print(f"{cleaned_text}: www.metacoregames.com{href}")
