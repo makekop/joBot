@@ -17,14 +17,13 @@ def main():
             text = link.inner_text().strip()
             href = link.get_attribute("href").replace("?duplicate=true", "").strip()
             parts = [p.strip() for p in text.split(",")]
-            job_title = parts[0]
-            print(job_title)  # printing to see the result
+            part_split = parts[0].split("\n")
 
             if not header_printed:
                 print("Here are the current job openings: ")
                 header_printed = True
 
-            # print(f"{job_title}: www.metacoregames.com{href}")
+            print(f"{part_split[0]}: www.metacoregames.com{href}")
 
 
 if __name__ == "__main__":
