@@ -57,3 +57,11 @@ python3 jobot.py
 ## License
 
 MIT License
+
+⚠ DISCLAIMER:
+This script uses BeautifulSoup, which only parses static HTML.
+It does NOT execute or render JavaScript on the page.
+If the website uses JavaScript to load or update data dynamically,
+the script may miss important content.
+For such cases, consider using a browser automation tool like Playwright or Selenium.
+I'm currently working on playwright version in this same branch.
