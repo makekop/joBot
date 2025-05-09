@@ -2,14 +2,20 @@
 
 from bs4 import BeautifulSoup
 import requests
+from playwright.sync_api import sync_playwright
 
 
 def main():
 
-    url = "https://metacoregames.com/careers"
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto("https://metacoregames.com/open-positions")
+        page.wait_for_selector(".job-title")
+        content = page.content()
+        browser.close()
 
-    result = requests.get(url)
-    doc = BeautifulSoup(result.text, "html.parser")
+    doc = BeautifulSoup(content, "html.parser")
 
     header_printed = False
 
@@ -25,6 +31,13 @@ def main():
                 .replace("New GamesMarketing", "")
                 .replace("Merge MansionProduct Management & Berlin", "")
                 .replace(",", "")
+                .replace("People & Talent AcquisitionBerlin", "")
+                .replace("Production", "")
+                .replace("General", "")
+                .replace("Game Design", "")
+                .replace("Berlin", "")
+                .replace("Art & Animation", "")
+                .replace("Product Management &", "")
                 .strip()
             )
             if not header_printed:
