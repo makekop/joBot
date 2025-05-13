@@ -16,14 +16,14 @@ def main():
         for link in page.query_selector_all('a[href*="open-positions/"]'):
             text = link.inner_text().strip()
             href = link.get_attribute("href").replace("?duplicate=true", "").strip()
-            parts = [p.strip() for p in text.split(",")]
-            part_split = parts[0].split("\n")
+            parts = text.split("\n")
+            job_title = parts
 
             if not header_printed:
-                print("Here are the current job openings: ")
+                print("Here are the current job openings:\n ")
                 header_printed = True
 
-            print(f"{part_split[0]}: www.metacoregames.com{href}")
+            print(f"{job_title[0]}: www.metacoregames.com{href}")
 
 
 if __name__ == "__main__":
