@@ -1,4 +1,3 @@
-````markdown
 # JoBot (Playwright Edition)
 
 **JoBot** is a simple Python script that scrapes job openings from the [Metacore Careers page](https://metacoregames.com/open-positions) using [Playwright](https://playwright.dev/python/). It launches a headless browser to accurately capture dynamic, JavaScript-rendered job listings.
@@ -22,6 +21,7 @@
 git clone https://github.com/makekop/joBot.git
 cd playwright
 ```
+
 ````
 
 ### 2. Install dependencies
@@ -66,7 +66,4 @@ All required packages are listed in `requirements.txt`.
 ## 📄 License
 
 MIT License
-
-```
-
-```
+````
