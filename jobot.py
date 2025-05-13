@@ -6,7 +6,7 @@ import requests
 
 def main():
 
-    url = "https://metacoregames.com/careers"
+    url = "https://metacoregames.com/open-positions"
 
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "html.parser")
@@ -20,13 +20,24 @@ def main():
         if "/open-positions/" in href.lower():
             cleaned_text = (
                 text.replace("Helsinki", "")
+                .replace("Berlin", "")
                 .replace("Tech", "")
                 .replace("Data & Analytics", "")
                 .replace("New GamesMarketing", "")
-                .replace("Merge MansionProduct Management & Berlin", "")
+                .replace("Merge", "")
                 .replace(",", "")
+                .replace("Art & Animation", "")
+                .replace("Production", "")
+                .replace("Product Management", "")
+                .replace("PartnerPeople & Talent Acquisition", "")
+                .replace("Marketing", "")
+                .replace("General", "")
+                .replace("Game Design", "")
+                .replace("Mansion &", "")
+                .replace("&", "")
                 .strip()
             )
+
             if not header_printed:
                 print("Here are the current job openings: ")
                 header_printed = True
