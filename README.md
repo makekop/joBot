@@ -22,8 +22,6 @@ git clone https://github.com/makekop/joBot.git
 cd playwright
 ```
 
-````
-
 ### 2. Install dependencies
 
 ```bash
@@ -61,9 +59,14 @@ All required packages are listed in `requirements.txt`.
 
 ## 🪦 Legacy Version
 
-## Beautifulsoup version with in the `legacy/` folder.
+A simpler version using `requests` and `BeautifulSoup` is available in the `legacy/` folder.
+
+---
 
 ## 📄 License
 
 MIT License
-````
+
+```
+
+```
