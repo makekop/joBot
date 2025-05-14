@@ -11,19 +11,21 @@ def main():
         page.goto("https://metacoregames.com/open-positions")
         page.wait_for_selector(".job-title")
 
-        header_printed = False
+        print("Here are the current job openings:\n ")
 
         for link in page.query_selector_all('a[href*="open-positions/"]'):
             text = link.inner_text().strip()
             href = link.get_attribute("href").replace("?duplicate=true", "").strip()
-            parts = text.split("\n")
-            job_title = parts
+            split = text.split("\n")
+            job = {
+                "title": split[0].split(",")[0],
+                "category": split[1],
+                "location": split[2],
+                "id": href,
+                "url": f"www.metacoregames.com{href}",
+            }
 
-            if not header_printed:
-                print("Here are the current job openings:\n ")
-                header_printed = True
-
-            print(f"{job_title[0]}: www.metacoregames.com{href}")
+            print(f"{job["title"]} {job['url']}")
 
 
 if __name__ == "__main__":
