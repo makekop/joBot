@@ -25,7 +25,7 @@ def main():
                 "url": f"www.metacoregames.com{href}",
             }
 
-            print(f"{job["title"]} {job['url']}")
+            print(f"{job["title"]}, {job['location']}: {job['url']}")
 
 
 if __name__ == "__main__":
