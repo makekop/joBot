@@ -9,7 +9,7 @@ def get_metacore_jobs():
         page = browser.new_page()
         page.goto("https://metacoregames.com/open-positions")
 
-        print("Open Positions at Metacore:\n ")
+        print("\nOpen Positions at Metacore:\n ")
 
         for link in page.query_selector_all('a[href*="open-positions/"]'):
             text = link.inner_text().strip()
@@ -20,7 +20,7 @@ def get_metacore_jobs():
                 "category": split[1],
                 "location": split[2],
                 "id": href,
-                "url": f"www.metacoregames.com{href}",
+                "url": f"https://www.metacoregames.com{href}",
             }
 
             print(f"{job["title"]}: {job["url"]}")
@@ -63,7 +63,7 @@ def get_supercell_jobs():
 
             job = {
                 "title": split[0],
-                "url": f"www.supercell.com{href}",
+                "url": f"https://www.supercell.com{href}",
             }
 
             print(f"{job["title"]}: {job["url"]}")
