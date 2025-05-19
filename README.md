@@ -1,6 +1,6 @@
 # JoBot (Playwright Edition)
 
-**JoBot** is a simple Python script that scrapes job openings from the [Metacore Careers page](https://metacoregames.com/open-positions) using [Playwright](https://playwright.dev/python/). It launches a headless browser to accurately capture dynamic, JavaScript-rendered job listings.
+**JoBot** is a simple Python script that scrapes open positions from Finnish Game companies using [Playwright](https://playwright.dev/python/). Jobot launches a headless browser to accurately capture up to date information on job postings from company websites.
 
 ---
 
@@ -10,6 +10,10 @@
 ✅ Waits for job listings to fully load before scraping  
 ✅ Cleans up noisy job titles and query parameters  
 ✅ Outputs job listings in a readable format
+✅ Company list: 
+    - Metacore
+    - Rovio
+    - Supercell
 
 ---
 
@@ -65,8 +69,4 @@ A simpler version using `requests` and `BeautifulSoup` is available in the `lega
 
 ## 📄 License
 
-MIT License
-
-```
-
-```
+[MIT License](https://mit-license.org/)
