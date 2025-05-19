@@ -23,7 +23,7 @@ def get_metacore_jobs():
                 "url": f"www.metacoregames.com{href}",
             }
 
-            print(f"{job["title"]}, {job["location"]}: {job["url"]}")
+            print(f"{job["title"]}: {job["url"]}")
         browser.close()
 
 
@@ -41,17 +41,39 @@ def get_rovio_jobs():
                 continue
             text = link.inner_text().strip()
             split = text.split(",")
+            job = {"title": split[0], "url": href}
+
+            print(f"{job['title']}: {job["url"]}")
+        browser.close()
+
+
+def get_supercell_jobs():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto("https://supercell.com/en/careers/")
+        jobs = page.query_selector_all('li[data-test-id="open-position"]')
+
+        print("\nOpen Positions at Supercell:\n")
+
+        for job in jobs:
+            title = job.query_selector(".Offers_title__y_jGJ").inner_text().strip()
+            href = job.query_selector("a").get_attribute("href").strip()
+            split = title.split(",")
+
             job = {
                 "title": split[0],
-                "url": href,
+                "url": f"www.supercell.com{href}",
             }
-            print(f"{job['title']}: {job["url"]}")
+
+            print(f"{job["title"]}: {job["url"]}")
         browser.close()
 
 
 def main():
     get_metacore_jobs()
     get_rovio_jobs()
+    get_supercell_jobs()
 
 
 if __name__ == "__main__":
