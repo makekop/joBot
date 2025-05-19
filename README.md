@@ -10,7 +10,7 @@
 ✅ Waits for job listings to fully load before scraping  
 ✅ Cleans up noisy job titles and query parameters  
 ✅ Outputs job listings in a readable format
-✅ Company list: 
+✅ Company list:
     - Metacore
     - Rovio
     - Supercell
