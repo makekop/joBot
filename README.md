@@ -14,6 +14,7 @@
     - Metacore
     - Rovio
     - Supercell
+    - Small Giant Games
 
 ---
 
