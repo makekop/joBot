@@ -70,10 +70,36 @@ def get_supercell_jobs():
         browser.close()
 
 
+def get_smallgiantgames_jobs():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto("https://job-boards.greenhouse.io/sggcareers")
+
+        print("\nOpen Positions at Small Giant Games:\n ")
+
+        for link in page.query_selector_all('a[href*="jobs/"]'):
+            href = link.get_attribute("href").strip()
+            text = link.inner_text().strip()
+            title = text.split("\n")[0].strip()
+
+            job = {
+                "title": title,
+                "url": (
+                    href
+                    if href.startswith("http")
+                    else f"https://job-boards.greenhouse.io{href}"
+                ),
+            }
+            print(f"{job["title"]}: {job["url"]}")
+        browser.close()
+
+
 def main():
     get_metacore_jobs()
     get_rovio_jobs()
     get_supercell_jobs()
+    get_smallgiantgames_jobs()
 
 
 if __name__ == "__main__":
