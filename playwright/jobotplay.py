@@ -17,8 +17,6 @@ def get_metacore_jobs():
             split = text.split("\n")
             job = {
                 "title": split[0].split(",")[0],
-                "category": split[1],
-                "location": split[2],
                 "id": href,
                 "url": f"https://www.metacoregames.com{href}",
             }
@@ -47,27 +45,41 @@ def get_rovio_jobs():
         browser.close()
 
 
+from playwright.sync_api import sync_playwright
+
+
 def get_supercell_jobs():
+    IGNORE_PATHS = {
+        "/en/careers",
+        "/en/careers/living-helsinki/",
+        "/en/careers/our-culture/",
+        "/en/careers/benefits/",
+    }
+
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-        page.goto("https://supercell.com/en/careers/")
-        jobs = page.query_selector_all('li[data-test-id="open-position"]')
 
-        print("\nOpen Positions at Supercell:\n")
+        page.goto(
+            "https://supercell.com/en/careers/?location=helsinki",
+            wait_until="networkidle",
+        )
 
-        for job in jobs:
-            title = job.query_selector(".Offers_title__y_jGJ").inner_text().strip()
-            href = job.query_selector("a").get_attribute("href").strip()
-            split = title.split(",")
-
-            job = {
-                "title": split[0],
-                "url": f"https://www.supercell.com{href}",
-            }
-
-            print(f"{job["title"]}: {job["url"]}")
-        browser.close()
+        print("\nOpen Positions at Supercell (Helsinki):\n")
+        for link in page.query_selector_all('a[href^="/en/careers/"]'):
+            href = link.get_attribute("href")
+            if not href:
+                continue
+            href = href.rstrip("/") + "/"
+            if href in IGNORE_PATHS:
+                continue
+            text = link.inner_text().strip()
+            if not text:
+                continue
+            if "helsinki" not in text.lower():
+                continue
+            title = text.split("\n")[0]
+            print(f"{title}: https://supercell.com{href}")
 
 
 def get_smallgiantgames_jobs():
@@ -100,6 +112,7 @@ def main():
     get_rovio_jobs()
     get_supercell_jobs()
     get_smallgiantgames_jobs()
+    pass
 
 
 if __name__ == "__main__":

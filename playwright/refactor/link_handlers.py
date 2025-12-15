@@ -37,3 +37,16 @@ def supercellLinkHandler(link):
     }
 
     print(f"{job["title"]}: {job["url"]}")
+
+
+def supercellLinkHandler(link):
+    title = link.query_selector(".Offers_title__y_jGJ").inner_text().strip()
+    href = link.query_selector("a").get_attribute("href").strip()
+    split = title.split(",")
+
+    job = {
+        "title": split[0],
+        "url": f"https://www.supercell.com{href}",
+    }
+
+    print(f"{job["title"]}: {job["url"]}")
